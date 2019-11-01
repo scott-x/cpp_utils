@@ -2,9 +2,10 @@
 * @Author: scottxiong
 * @Date:   2019-11-01 10:40:23
 * @Last Modified by:   scottxiong
-* @Last Modified time: 2019-11-01 11:57:38
+* @Last Modified time: 2019-11-01 14:49:17
 */
 #include <string>
+#include "string.h"
 
 char *toUpper(char *str){
    char * addr = str;
@@ -51,6 +52,10 @@ int counts(char *str){
 int index(char *str, char * substr){
 	int result = -1;
 	int strleng = strlen(str);
+  int subleng = strlen(substr);
+  if (subleng > strleng){
+    return result;
+  }
 	char *p1, *p2;
 	p1 = str;
 	p2 = substr;
@@ -68,4 +73,8 @@ int index(char *str, char * substr){
 		
 	}
     return result;
+};
+
+void replace(char *str, std::string from, std::string to){
+  
 };
