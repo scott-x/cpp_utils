@@ -18,6 +18,7 @@ namespace micky {
 		~FS();
 	public:
 		void loop(const char* folder);
+		char* readFile(const char* filename);
 	public:
 		struct expand e;
 	};
