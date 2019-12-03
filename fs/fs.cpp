@@ -1,8 +1,8 @@
 /*
 * @Author: scottxiong
 * @Date:   2019-11-01 14:33:33
-* @Last Modified by:   scottxiong
-* @Last Modified time: 2019-12-02 18:01:38
+* @Last Modified by:   sottxiong
+* @Last Modified time: 2019-12-03 20:19:50
 ref：http://www.lucasgabrieltutors.weinode.com/articles/71
 */
 #include <stdio.h>
@@ -55,28 +55,21 @@ namespace micky {
         closedir(dir);
     }
 
-    char* FS::readFile(const char* filename){
+    void FS::readFile(const char* filename){
         FILE * fp;
         char ch;
-        char *content = (char *)malloc(sizeof(char));
-        if (content==NULL){
-            return NULL;
-        }
-        char* p = content;
         //open
         fp = fopen(filename,"r");
         if (fp==NULL) {
             printf("fail to open %s \n", filename);
-            return NULL;
+            return;
         }
-        //如果没到文件尾部，一致读取
+        //如果没到文件尾部，一直读取
         while((ch = fgetc(fp)) != EOF){
            // putchar(ch);//fgetc一次只能读取一个字符；putchar显示
-           *p = ch;
-           p= (char *)realloc(p, 256);
+          (e.contenthandler)(ch);
         }
         //close
         fclose(fp);
-        return content;
     }
 } // micky

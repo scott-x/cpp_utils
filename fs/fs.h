@@ -10,6 +10,7 @@ namespace micky {
 	//结构体的函数指针用于扩展class
 	struct expand{
        void (*filehandler)(char *file);
+       void (*contenthandler)(char ch);
 	};
 	class FS
 	{
@@ -18,7 +19,7 @@ namespace micky {
 		~FS();
 	public:
 		void loop(const char* folder);
-		char* readFile(const char* filename);
+		void readFile(const char* filename);
 	public:
 		struct expand e;
 	};
