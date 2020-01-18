@@ -1,0 +1,5 @@
+### cl
+
+```c++
+enum color {RED,GREEN,BLUE,YELLOW,WHITE,PURPLE,FLASH,BGRED,BGTEER};
+```
