@@ -6,9 +6,10 @@
 */
 #include <iostream>
 #include "time/time.h"
+using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	micky::GetTime("");
+	cout<< micky::GetTime(3) <<endl;
 	return 0;
 }

@@ -13,3 +13,18 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 ```
+
+### time_t GetTimestamp()
+
+### std::string GetTime(int types)
+```c++
+#include <iostream>
+#include "time/time.h"
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+	cout<< micky::GetTime(3) <<endl;
+	return 0;
+}
+```

@@ -3,6 +3,7 @@
 * @Date:   2019-11-01 14:37:34
 * @Last Modified by:   scottxiong
 * @Last Modified time: 2019-11-01 14:37:34
+c++ 的switch只支持enume和int类型
 */
 
 #ifndef __TIME_H__
@@ -20,7 +21,30 @@ namespace micky {
     	return time(0);
     }
     //https://www.runoob.com/cplusplus/cpp-date-time.html
-	std::string GetTime(std::string types) {
+
+    /*
+       types
+
+       ""                         0  
+       "yyyy-mm-dd hh:mm:ss":     1
+       "yyyymmdd":                2
+       "yyyy年mm月dd日":           3
+       "yyyy-mm-dd":              4
+       "yyyy/mm/dd":              5
+       "mmdd":                    6
+       "mm/dd":                   7
+       "mm-dd":                   8
+       "mm月dd日":                 9
+       "hh:mm:ss" :               10
+       "mm/dd":                   11
+       "hh:mm" :                  12
+       "hh时mm分":                13
+       "hh时mm分ss秒":            14
+       "yyyy":                   15
+       "yyyy年":                 16
+       "yyyymm":                 17
+    */
+	std::string GetTime(int types) {
 		time_t now = time(0);
 		tm *ltm = localtime(&now);
 		int year = 1900 + ltm->tm_year;
@@ -39,53 +63,53 @@ namespace micky {
         
         std::string res;
         switch(types){
-        	case "":
-        	case "yyyy-mm-dd hh:mm:ss":
+        	case 0:
+        	case 1:
         		res = s_year+"-"+s_month+"-"+s_day+" "+ s_hour+":"+s_min+":"+s_sec;
         		break;
-        	case "yyyymmdd":
+        	case 2:
         		res = s_year+s_month+s_day;
         		break;
-        	case "yyyy年mm月dd日":
+        	case 3:
         		res = 	s_year +"年"+ s_month+"月"+s_day+"日";
         		break;
-        	case "yyyy-mm-dd":
+        	case 4:
         	    res = s_year+"-"+s_month+"-"+s_day;
         	    break;
-        	case "yyyy/mm/dd":
+        	case 5:
         	    res = s_year+"/"+s_month+"/"+s_day;
         	    break;
-        	case "mmdd":
+        	case 6:
         		 res = s_month+s_day;
         		 break;
-        	case "mm/dd":
+        	case 7:
         		 res = s_month+"/"+s_day;
         		 break;	
-        	case "mm-dd":
+        	case 8:
         		 res = s_month+"-"+s_day;
         		 break;	
-        	case "mm月dd日" :	
+        	case 9 :	
         		 res =  s_month+"月"+s_day+"日";
         		 break;
-        	case "hh:mm:ss" :
+        	case 10 :
         	 	 res = 	s_hour+":"+s_min+":"+s_sec;
         	 	 break;
-        	case "hh:mm" :
+        	case 11 :
         		 res =  s_hour+":"+s_min;
         		 break;
-        	case "hh时mm分":
+        	case 12:
         		 res = s_hour+"时"+s_min+"分";	 
         		 break;
-        	case "hh时mm分ss秒":
+        	case 13:
         		 res = s_hour+"时"+s_min+"分"+s_sec+"秒";
         		 break;
-        	case "yyyy":
+        	case 14:
         		 res = s_year;
         		 break;
-            case "yyyy年":
+            case 15:
             	 res = s_year +"年";
             	 break;
-            case "yyyymm":
+            case 16:
             	 res =  s_year+s_month;
             	 break;
             default:
